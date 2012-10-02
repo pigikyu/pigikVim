@@ -6,9 +6,16 @@ endif
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
+filetype on
+filetype indent on
+filetype plugin on
+
+syntax on
+
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+set laststatus=2        " Always show the statusline
 set nu
 set bs=2
 set history=1000
@@ -21,15 +28,9 @@ set copyindent
 set ignorecase
 set smartcase
 set smarttab
-
-filetype on
-filetype indent on
-filetype plugin on
+set hlsearch            " search highlighting
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
-
-syntax on
-set hlsearch        	" search highlighting
 
 "if has("gui_running")
    set background=dark
@@ -94,7 +95,7 @@ autocmd FileType java set omnifunc=javacomplete#Complete
 
 " use syntax complete if nothing else available
 if has("autocmd") && exists("+omnifunc")
-  autocmd FileType *
+autocmd FileType *
     \ if &omnifunc == "" |
     \      setlocal omnifunc=syntaxcomplete#Complete |
     \ endif
@@ -105,6 +106,28 @@ set cot-=preview " disable doc preview in omnicomplete
 " make CSS omnicompleteion work for SASS and SCSS
 autocmd BufNewFile,BufRead *.scss  set ft=scss.css
 autocmd BufNewFile,BufRead *.sass  set ft=sass.css
+
+" --- superTab
+let g:SuperTabDefaultCompletionType="Context"
+let g:SuperTabCompletionContexts=['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextDiscoverDiscovery=["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+
+" --- Command-T
+let g:CommandTMaxHeight=15
+
+" --- AutoClose
+"if !has("gui_running")
+"   set term=linux
+   imap OA <ESC>ki
+   imap OB <ESC>ji
+   imap OC <ESC>li
+   imap OD <ESC>hi
+
+   nmap OA k
+   nmap OB j
+   nmap OC l
+   nmap OD h
+"endif
 
 " ENCODING SETTING
 set encoding=utf-8
