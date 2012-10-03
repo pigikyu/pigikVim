@@ -34,3 +34,9 @@
 [submodule "bundle/vim-addon-mw-utils"]
 	path = bundle/vim-addon-mw-utils
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/vim-taglist"]
+	path = bundle/vim-taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/vim-AutoComplPop"]
+	path = bundle/vim-AutoComplPop
+	url = git://github.com/vim-scripts/AutoComplPop.git

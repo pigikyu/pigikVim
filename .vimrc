@@ -29,6 +29,8 @@ set ignorecase
 set smartcase
 set smarttab
 set hlsearch            " search highlighting
+set clipboard+=unnamed
+set formatoptions=tcrqn
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
@@ -56,18 +58,13 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
 " TAB setting {
   set expandtab 	"replace <TAB> with spaces
   set softtabstop=3
   set shiftwidth=3
   au FileType Makefile set noexpandtab
 "}
-
+"
 "Restore cursor to file position in previous editing session
 set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
@@ -128,6 +125,17 @@ let g:CommandTMaxHeight=15
    nmap OC l
    nmap OD h
 "endif
+
+" --- Taglist
+nmap <C-F5><Esc>:!ctags -R *<CR>
+let Tlist_Auto_Open=1
+let Tlist_File_Fold_Auto_Close=1
+let Tlist_Exit_OnlyWindow=1
+let Tilst_Sort_Type="name"
+let Tlist_Use_SingleClick=1
+let Tlist_Process_File_Always=1
+
+map <silent> <F2> :TlistToggle<cr>
 
 " ENCODING SETTING
 set encoding=utf-8
