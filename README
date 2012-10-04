@@ -1,0 +1,11 @@
+press F2 to toggle NerdTree
+press F3 to toggle taglist
+
+install Clang_Complete
+1. apt-get install clang
+2. to the plugin folder and type"make install"
+
+generate ctags
+1. ctags -R --c++-kinds=+p --fields=+iaS --extra=+q /usr/include
+2. ctags -R *
+

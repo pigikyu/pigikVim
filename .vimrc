@@ -57,6 +57,8 @@ map Q gq
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
+map <silent> <F2> :NERDTreeToggle<CR>
+map <silent> <F3> :TlistToggle<CR>
 
 " TAB setting {
   set expandtab 	"replace <TAB> with spaces
@@ -101,6 +103,9 @@ let g:CommandTMaxHeight=15
    nmap OC l
    nmap OD h
 "endif
+
+" ---ctags
+set tags=tags
 
 " ENCODING SETTING
 set encoding=utf-8
