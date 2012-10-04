@@ -81,33 +81,9 @@ endif
 let mapleader=","
 let g:mapleader=","
 
-" Enable omni completion. 
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType java set omnifunc=javacomplete#Complete
-
-" use syntax complete if nothing else available
-if has("autocmd") && exists("+omnifunc")
-autocmd FileType *
-    \ if &omnifunc == "" |
-    \      setlocal omnifunc=syntaxcomplete#Complete |
-    \ endif
-endif
-
-set cot-=preview " disable doc preview in omnicomplete
-
-" make CSS omnicompleteion work for SASS and SCSS
-autocmd BufNewFile,BufRead *.scss  set ft=scss.css
-autocmd BufNewFile,BufRead *.sass  set ft=sass.css
-
 " --- superTab
 let g:SuperTabDefaultCompletionType="Context"
 let g:SuperTabCompletionContexts=['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextDiscoverDiscovery=["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
 " --- Command-T
 let g:CommandTMaxHeight=15
