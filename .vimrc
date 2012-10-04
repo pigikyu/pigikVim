@@ -102,17 +102,6 @@ let g:CommandTMaxHeight=15
    nmap OD h
 "endif
 
-" --- Taglist
-nmap <C-F5><Esc>:!ctags -R *<CR>
-let Tlist_Auto_Open=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Exit_OnlyWindow=1
-let Tilst_Sort_Type="name"
-let Tlist_Use_SingleClick=1
-let Tlist_Process_File_Always=1
-
-map <silent> <F2> :TlistToggle<cr>
-
 " ENCODING SETTING
 set encoding=utf-8
 set termencoding=utf-8
