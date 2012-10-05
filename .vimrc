@@ -35,11 +35,13 @@ set formatoptions=tcrqn
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
 "if has("gui_running")
+   "colorscheme oceandeep
+   colorscheme molokai
    set background=dark
    set t_Co=256 	" 256 color mode
    set cursorline 	" hightlight current line
-   highlight CursorLine guibg=26 ctermbg=17 gui=none cterm=none
-   highlight Normal ctermfg=250  ctermbg=232
+   "highlight CursorLine guibg=26 ctermbg=17 gui=none cterm=none
+   "highlight Normal ctermfg=250  ctermbg=232
 "endif
 
 " allow backspacing over everything in insert mode
@@ -62,8 +64,8 @@ map <silent> <F3> :TlistToggle<CR>
 
 " TAB setting {
   set expandtab 	"replace <TAB> with spaces
-  set softtabstop=3
-  set shiftwidth=3
+  set softtabstop=4
+  set shiftwidth=4
   au FileType Makefile set noexpandtab
 "}
 "
