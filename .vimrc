@@ -31,13 +31,14 @@ set smarttab
 set hlsearch            " search highlighting
 set clipboard+=unnamed
 set formatoptions=tcrqn
+set mouse=nv
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
 "if has("gui_running")
    "colorscheme oceandeep
    colorscheme molokai
-   set background=dark
+   "set background=dark
    set t_Co=256 	" 256 color mode
    set cursorline 	" hightlight current line
    "highlight CursorLine guibg=26 ctermbg=17 gui=none cterm=none
@@ -114,3 +115,46 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,big5,gb2312,latin1
+
+" QUICKFIX WINDOW
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+
+function! QFixToggle(forced)
+if exists("g:qfix_win") && a:forced == 0
+cclose
+unlet g:qfix_win
+else
+copen 10
+let g:qfix_win = bufnr("$")
+endif
+endfunction
+
+function s:Searchwordzx()
+    let findstring = input("Search string: ",expand("<cword>"))
+    let searchdir = ''
+
+    for line in readfile("sdir.txt",'',6)
+        let searchdir .= fnameescape(line).'*.{c,cpp,h}'
+    endfor
+    if findstring != ""
+        execute "vimgrep " findstring searchdir
+    endif
+endfunction
+
+function s:Searchwordglzx()
+    let searchstring = expand("<cword>")
+    let searchdir = ''
+    
+    for line in readfile("sdir.txt",'',6)
+        let searchdir .= fnameescape(line).'*.{c,cpp,h}'
+    endfor
+                       
+    if searchstring != ""
+        execute "vimgrep " searchstring searchdir
+    endif
+endfunction
+
+map <silent> <F4> :QFix <CR>
+map <silent> <F7> :call <SID>Searchwordglzx()<cr> \| <M-w>
+map <silent> <F8> :call <SID>Searchwordzx()<cr> \| <M-w>
+
