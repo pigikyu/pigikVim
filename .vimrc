@@ -108,7 +108,13 @@ let g:CommandTMaxHeight=15
 "endif
 
 " ---ctags
-set tags=tags
+set tags=~/.vim/tags
+
+" --- clang_complete
+le g:clang_snippets = 1
+let g:clang_snippets_engine = 'snipmate'
+set completeopt=menu,longest
+
 
 " ENCODING SETTING
 set encoding=utf-8
@@ -129,32 +135,7 @@ let g:qfix_win = bufnr("$")
 endif
 endfunction
 
-function s:Searchwordzx()
-    let findstring = input("Search string: ",expand("<cword>"))
-    let searchdir = ''
-
-    for line in readfile("sdir.txt",'',6)
-        let searchdir .= fnameescape(line).'*.{c,cpp,h}'
-    endfor
-    if findstring != ""
-        execute "vimgrep " findstring searchdir
-    endif
-endfunction
-
-function s:Searchwordglzx()
-    let searchstring = expand("<cword>")
-    let searchdir = ''
-    
-    for line in readfile("sdir.txt",'',6)
-        let searchdir .= fnameescape(line).'*.{c,cpp,h}'
-    endfor
-                       
-    if searchstring != ""
-        execute "vimgrep " searchstring searchdir
-    endif
-endfunction
-
 map <silent> <F4> :QFix <CR>
-map <silent> <F7> :call <SID>Searchwordglzx()<cr> \| <M-w>
-map <silent> <F8> :call <SID>Searchwordzx()<cr> \| <M-w>
+map <silent> <F7> :Grep <CR>
+"map <silent> <F8> :call <SID>Searchwordzx()<cr> \| <M-w>
 
