@@ -37,12 +37,11 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 
 "if has("gui_running")
    "colorscheme oceandeep
-   colorscheme molokai
-   "set background=dark
+   "colorscheme molokai
+   colorscheme wombat256mod
+   set linespace=3
    set t_Co=256 	" 256 color mode
    set cursorline 	" hightlight current line
-   "highlight CursorLine guibg=26 ctermbg=17 gui=none cterm=none
-   "highlight Normal ctermfg=250  ctermbg=232
 "endif
 
 " allow backspacing over everything in insert mode
@@ -87,7 +86,7 @@ let mapleader=","
 let g:mapleader=","
 
 " --- superTab
-let g:SuperTabDefaultCompletionType="Context"
+let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabCompletionContexts=['s:ContextText', 's:ContextDiscover']
 
 " --- Command-T
@@ -111,8 +110,12 @@ let g:CommandTMaxHeight=15
 set tags=~/.vim/tags
 
 " --- clang_complete
-le g:clang_snippets = 1
-let g:clang_snippets_engine = 'snipmate'
+"let g:clang_snippets=1
+"let g:clang_snippets_engine='snipmate'
+let g:clean_complete_auto = 0
+let g:clang_complete_copen = 1
+let g:clang_use_library = 1
+let g:clang_libary_path = "/usr/lib"
 set completeopt=menu,longest
 
 

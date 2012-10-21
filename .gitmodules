@@ -46,3 +46,6 @@
 [submodule "bundle/vim-grep"]
 	path = bundle/vim-grep
 	url = git://github.com/vim-scripts/grep.vim.git
+[submodule "bundle/vim-TabBar"]
+	path = bundle/vim-TabBar
+	url = git://github.com/vim-scripts/TabBar.git
