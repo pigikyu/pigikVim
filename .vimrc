@@ -37,8 +37,11 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 
 "if has("gui_running")
    "colorscheme oceandeep
-   "colorscheme molokai
-   colorscheme wombat256mod
+   colorscheme molokai
+   "colorscheme wombat256mod
+   "colorscheme asmanian_blood
+   "colorscheme desert
+   "colorscheme gentooish
    set linespace=3
    set t_Co=256 	" 256 color mode
    set cursorline 	" hightlight current line
@@ -108,6 +111,15 @@ let g:CommandTMaxHeight=15
 
 " ---ctags
 set tags=~/.vim/tags
+set tags+=tags
+
+" ---cscope
+if has("cscope")
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set csto=0
+    set cst
+    set csverb
+endif
 
 " --- clang_complete
 "let g:clang_snippets=1
@@ -117,7 +129,6 @@ let g:clang_complete_copen = 1
 let g:clang_use_library = 1
 let g:clang_libary_path = "/usr/lib"
 set completeopt=menu,longest
-
 
 " ENCODING SETTING
 set encoding=utf-8
@@ -139,6 +150,51 @@ endif
 endfunction
 
 map <silent> <F4> :QFix <CR>
+map <silent> <F5> :make <CR>
 map <silent> <F7> :Grep <CR>
-"map <silent> <F8> :call <SID>Searchwordzx()<cr> \| <M-w>
+map <silent> <F8> :call Do_CsTag()<CR>
+
+function Do_CsTag()
+    let dir = getcwd()
+    if filereadable("tags")
+        let tagsdeleted=delete("./"."tags")
+        if(tagsdeleted!=0)
+            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
+            return
+        endif
+    endif
+    
+    if has("cscope")
+        silent! execute "cs kill -1"
+    endif
+    
+    if filereadable("cscope.files")
+        let csfilesdeleted=delete("./"."cscope.files")
+        if(csfilesdeleted!=0)
+            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
+            return
+        endif
+    endif
+    
+    if filereadable("cscope.out")
+        let csoutdeleted=delete("./"."cscope.out")
+        if(csoutdeleted!=0)
+            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
+            return
+        endif
+    endif
+
+    if(executable('ctags'))
+        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
+    endif
+
+    if(executable('cscope') && has("cscope"))
+        silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
+        silent! execute "!cscope -b"
+        execute "normal :"
+        if filereadable("cscope.out")
+            execute "cs add cscope.out"
+        endif
+    endif
+endfunction
 
