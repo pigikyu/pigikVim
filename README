@@ -8,18 +8,44 @@ install step:
 
 how to:
 1. press F2 to toggle NerdTree
-2. press F3 to toggle taglist
-3. press F4 to toggle quickFix
-4. press F7 to execute ":Grep" 
-5. press F5 to execute ":make"
-6. execute ":A" to switch between cpp file and h file
-7. press F8 to generate ctags and cscope file in the root folder.
+2. press F3 or F4 to generate ctags and cscope file(using the autotags plugin).
+3. press F5 to toggle taglist
+4. press F6 to toggle quickFix
+5. press F7 to execute ":Grep" 
+6. press F8 to toggle "NerdTree", "taglist" and "SourceExploer"
+7. press F9 to toggle "SourceExploer"
+8. execute ":A" to switch between cpp file and h file
+9. press F3 or F4 to generate ctags and cscope file(using the autotags plugin).
 
 install Clang_Complete
 1. apt-get install libclang1 and libclang-dev (clang?)
-2. to the "Clang_Complete" plugin folder and type"make install"
 
 generate ctags
 1. ctags -R --c++-kinds=+p --fields=+iaS --extra=+q /usr/include
 2. ctags -R *
 
+Add Font: Source Code Pro
+1. copy the *.otf to ~/.fonts 
+2. execute "fc-cache -f -v"
+
+Reference:
+1. http://liluo.org/blog/2012/05/using-git-submodule-and-vim-pathogen-for-vim-configuraction-management/
+2. http://askubuntu.com/questions/193072/how-to-use-the-new-adobe-source-code-pro-Font
+3. http://sourceforge.net/projects/sourcecodepro.adobe/
+
+plugins:
+1. autotags:        https://github.com/basilgor/vim-autotags
+2. SrcExpl:         https://github.com/wesleyche/SrcExpl
+3. minibufexpl:     http://www.vim.org/scripts/script.php?script_id=159
+4. Trinity:         https://github.com/wesleyche/Trinity
+5. taglist:         http://www.vim.org/scripts/script.php?script_id=273
+6. The NERD tree:   http://www.vim.org/scripts/script.php?script_id=1658
+7. c.vim:           http://www.vim.org/scripts/script.php?script_id=213
+8. AutoComplPop:    http://www.vim.org/scripts/script.php?script_id=1879
+9. a.vim:           http://www.vim.org/scripts/script.php?script_id=31
+10. pathogen.vim:   http://www.vim.org/scripts/script.php?script_id=2332
+11. clang complete: http://www.vim.org/scripts/script.php?script_id=3302
+12. grep.vim:       http://www.vim.org/scripts/script.php?script_id=311
+13. AutoClose:      http://www.vim.org/scripts/script.php?script_id=1849
+14. Command-T:      http://www.vim.org/scripts/script.php?script_id=3025
+15. SuperTab:       http://www.vim.org/scripts/script.php?script_id=182
