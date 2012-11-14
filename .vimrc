@@ -6,6 +6,8 @@ endif
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
+source ~/.vim/vdb.vim
+
 filetype on
 filetype indent on
 filetype plugin on
@@ -62,8 +64,6 @@ map Q gq
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
-map <silent> <F2> :NERDTreeToggle<CR>
-map <silent> <F3> :TlistToggle<CR>
 
 " TAB setting {
   set expandtab 	"replace <TAB> with spaces
@@ -109,9 +109,16 @@ let g:CommandTMaxHeight=15
    nmap OD h
 "endif
 
-" ---ctags
-set tags=~/.vim/tags
-set tags+=tags
+
+" --- BufExpl
+let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplModSelTarget = 1 
+
+" --- ctags
+"set tags=~/.vim/tags
+"set tags+=tags
 
 " ---cscope
 if has("cscope")
@@ -120,6 +127,20 @@ if has("cscope")
     set cst
     set csverb
 endif
+
+" --- Source Explorer
+let g:SrcExpl_winHeight = 8
+let g:SrcExpl_refreshTime = 100
+let g:SrcExpl_jumpKey = "<ENTER>"
+let g:SrcExpl_gobackKey = "<SPACE>"
+let g:SrcExpl_searchLocalDef = 1
+let g:SrcExpl_isUpdateTags = 0
+
+let g:SrcExpl_pluginList=[
+    \"__Tag_List__",
+    \"_NERD_tree_",
+    \"Source_Explorer"
+    \]
 
 " --- clang_complete
 "let g:clang_snippets=1
@@ -149,52 +170,37 @@ let g:qfix_win = bufnr("$")
 endif
 endfunction
 
-map <silent> <F4> :QFix <CR>
-map <silent> <F5> :make <CR>
-map <silent> <F7> :Grep <CR>
-map <silent> <F8> :call Do_CsTag()<CR>
+let g:usingDgb=0
 
-function Do_CsTag()
-    let dir = getcwd()
-    if filereadable("tags")
-        let tagsdeleted=delete("./"."tags")
-        if(tagsdeleted!=0)
-            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
-            return
-        endif
-    endif
-    
-    if has("cscope")
-        silent! execute "cs kill -1"
-    endif
-    
-    if filereadable("cscope.files")
-        let csfilesdeleted=delete("./"."cscope.files")
-        if(csfilesdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
-            return
-        endif
-    endif
-    
-    if filereadable("cscope.out")
-        let csoutdeleted=delete("./"."cscope.out")
-        if(csoutdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
-            return
-        endif
-    endif
-
-    if(executable('ctags'))
-        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
-    endif
-
-    if(executable('cscope') && has("cscope"))
-        silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
-        silent! execute "!cscope -b"
-        execute "normal :"
-        if filereadable("cscope.out")
-            execute "cs add cscope.out"
-        endif
+function! UseDebugToggle()
+    if(g:usingDgb == 1)
+        call NormalMapping()
+        let g:usingDgb = 0
+    else
+        call DbgMapping()
+        let g:usingDgb = 1
     endif
 endfunction
 
+function! NormalMapping()
+    map <silent> <F2> :TrinityToggleNERDTree<CR>
+    map <silent> <F5> :TrinityToggleTagList<CR>
+    map <silent> <F6> :QFix <CR>
+    map <silent> <F7> :Grep <CR>
+    map <silent> <F8> :TrinityToggleAll <CR>
+    map <silent> <F9> :TrinityToggleSourceExplorer<CR>
+    map <silent> <F12> :call UseDebugToggle() <CR>
+endfunction
+
+function! DbgMapping()
+    "map <silent> <F4> :GdbFromVimRun <CR>
+    "map <silent> <F5> :GdbFromVimStep <CR>
+    "map <silent> <F6> :GdbFromVimNext <CR>
+    "map <silent> <F7> :GdbFromVimAddBreakpoint <CR>
+    "map <silent> <F8> :GdbFromFromDeleteBreakpoint <CR>
+    "map <silent> <F9> :GdbFromVimClear <CR>
+    call VDBMapDefaults()
+    map <silent> <F12> :call UseDebugToggle() <CR>
+endfunction
+
+call NormalMapping()
