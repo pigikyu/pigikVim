@@ -36,6 +36,8 @@ set formatoptions=tcrqn
 set mouse=nv
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd BufRead,BufNewFile *.h set filetype=c
+let g:C_SourceCodeExtensions = 'h c cc cp cxx cpp CPP c++ i ii'
 
 "if has("gui_running")
    "colorscheme oceandeep

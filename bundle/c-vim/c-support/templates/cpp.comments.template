@@ -11,45 +11,46 @@
 // =====================================================================================
 == Comments.method == map:cme, shortcut:m  ==
 //--------------------------------------------------------------------------------------
-//       Class:  |?CLASSNAME|
-//      Method:  |?CLASSNAME| :: |?METHODNAME|
-// Description:  <CURSOR>
+/// @class |?CLASSNAME|
+//  Method:  |?CLASSNAME| :: |?METHODNAME|
+/// @brief <CURSOR>
 //--------------------------------------------------------------------------------------
 == Comments.class == map:ccl, shortcut:c  ==
 // =====================================================================================
-//        Class:  |?CLASSNAME|
-//  Description:  <CURSOR>
+/// @class |?CLASSNAME|
+/// @brief <CURSOR>
+/// @detail
 // =====================================================================================
 == Comments.file description impl == map:cfdi, shortcut:c, start, noindent ==
 // =====================================================================================
 //
-//       Filename:  |FILENAME|
+/// @file |FILENAME|
 //
-//    Description:  <CURSOR>
+/// @brief <CURSOR>
 //
-//        Version:  1.0
-//        Created:  |DATE| |TIME|
-//       Revision:  none
-//       Compiler:  g++
+/// @version 1.0
+//  @date |DATE| |TIME|
+//  Revision:  none
+//  Compiler:  g++
 //
-//         Author:  |AUTHOR| (|AUTHORREF|), |EMAIL|
-//   Organization:  |ORGANIZATION|
+/// @author |AUTHOR| (|AUTHORREF|), |EMAIL|
+//  Organization:  |ORGANIZATION|
 //
 // =====================================================================================
 == Comments.file description header == map:cfdh, shortcut:h, start, noindent ==
 // =====================================================================================
 //
-//       Filename:  |FILENAME|
+/// @file |FILENAME|
 //
-//    Description:  <CURSOR>
+/// @brief <CURSOR>
 //
-//        Version:  1.0
-//        Created:  |DATE| |TIME|
-//       Revision:  none
-//       Compiler:  gcc
+/// @version 1.0
+//  @date |DATE| |TIME|
+//  Revision:  none
+//  Compiler:  g++
 //
-//         Author:  |AUTHOR| (|AUTHORREF|), |EMAIL|
-//   Organization:  |ORGANIZATION|
+/// @author |AUTHOR| (|AUTHORREF|), |EMAIL|
+//  Organization:  |ORGANIZATION|
 //
 // =====================================================================================
 == ENDTEMPLATE ==
