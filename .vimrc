@@ -14,6 +14,9 @@ filetype plugin on
 
 syntax on
 
+let g:DoxygenToolkit_compactOneLineDoc="yes"
+let g:DoxygenToolkit_commentType="C++"
+
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
