@@ -432,6 +432,6 @@ syn match cCustomFunc   "\w\+\s*(" contains=cCustomParen
 syn match cCustomScope  "::"
 syn match cCustomClass  "\w\+\s*::" contains=cCustomScope
 
-hi def cCustomFunc cterm=bold ctermfg=25
-hi def cCustomScope cterm=bold ctermfg=11
-hi def cCustomClass cterm=bold ctermbg=232
+hi def cCustomFunc cterm=bold ctermfg=25 guifg=#005faf
+hi def cCustomScope cterm=bold ctermfg=11 guifg=#ffff00
+hi def cCustomClass cterm=bold ctermbg=232 guifg=#080808
