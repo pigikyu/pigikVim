@@ -25,14 +25,14 @@ syn keyword cppSTL		abort abs accumulate acos adjacent_difference adjacent_find 
 
 syn keyword cppStatement	new delete this friend using
 syn keyword cppAccess		public protected private
-syn keyword cppType		inline virtual explicit export bool wchar_t
+syn keyword cppType		inline virtual explicit export
 syn keyword cppExceptions	throw try catch
 syn keyword cppOperator		operator typeid
 syn keyword cppOperator		and bitor or xor compl bitand and_eq or_eq xor_eq not not_eq
 syn match cppCast		"\<\(const\|static\|dynamic\|reinterpret\)_cast\s*<"me=e-1
 syn match cppCast		"\<\(const\|static\|dynamic\|reinterpret\)_cast\s*$"
 syn keyword cppStorageClass	mutable
-syn keyword cppStructure	class typename template namespace
+syn keyword cppStructure	class typename template namespace struct
 syn keyword cppNumber		NPOS
 syn keyword cppBoolean		true false
 
@@ -54,9 +54,9 @@ if version >= 508 || !exists("did_cpp_syntax_inits")
   HiLink cppStatement		Statement
   HiLink cppSTL			Identifier
   HiLink cppNCBI		Special
-  HiLink cppType		Type
+"  HiLink cppType		Type
   HiLink cppStorageClass	StorageClass
-  HiLink cppStructure		Structure
+"  HiLink cppStructure		Structure
   HiLink cppNumber		Number
   HiLink cppBoolean		Boolean
   delcommand HiLink
@@ -72,6 +72,8 @@ syn match cCustomFunc  "\w\+\s*(" contains=cCustomParen
 syn match cCustomScope "::"
 syn match cCustomClass "\w\+\s*::" contains=cCustomScope
 
-hi def cCustomFunc cterm=bold ctermfg=33 guifg=#0087ff
-hi def cCustomScope cterm=bold ctermfg=11 guifg=#ffff00
-hi def cCustomClass cterm=bold ctermbg=232 guifg=#080808
+hi def cppType      cterm=bold ctermfg=129  guifg=#af00ff
+hi def cppStructure cterm=bold ctermfg=255  guifg=#eeeeee ctermbg=232 guibg=#080808
+hi def cCustomFunc  cterm=bold ctermfg=25   guifg=#005faf 
+hi def cCustomScope cterm=bold ctermfg=11   guifg=#ffff00
+hi def cCustomClass cterm=bold ctermbg=232  guifg=#eeeeee
