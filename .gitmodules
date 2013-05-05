@@ -18,7 +18,7 @@
 	url = git://github.com/Lokaltog/vim-powerline.git
 [submodule "bundle/vim-snipmate-snippets"]
 	path = bundle/vim-snipmate-snippets
-	url = git://github.com/honza/snipmate-snippets.git
+	url = git://github.com/honza/vim-snippets.git
 [submodule "bundle/vim-easymotion"]
 	path = bundle/vim-easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
