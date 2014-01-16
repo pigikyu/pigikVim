@@ -432,6 +432,12 @@ syn match cCustomFunc   "\w\+\s*(" contains=cCustomParen
 syn match cCustomScope  "::"
 syn match cCustomClass  "\w\+\s*::" contains=cCustomScope
 
-hi def cCustomFunc  cterm=bold ctermfg=25   guifg=#005faf 
-hi def cCustomScope cterm=bold ctermfg=11   guifg=#ffff00
-hi def cCustomClass cterm=bold ctermbg=232  guifg=#eeeeee
+"hi def cCustomFunc  cterm=bold ctermfg=25   guifg=#005faf 
+"hi def cCustomScope cterm=bold ctermfg=11   guifg=#ffff00
+"hi def cCustomClass cterm=bold ctermbg=232  guifg=#eeeeee
+if has("gui_running")
+hi def cCustomFunc  cterm=bold ctermfg=25    guifg=#ff5faf 
+hi def cCustomScope cterm=bold ctermfg=15    guifg=#ffff00
+hi def cCustomClass cterm=bold ctermbg=11    guifg=#00ff00 ctermfg=255
+endif
+
