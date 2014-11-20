@@ -4,11 +4,11 @@
 
 SetMacro( 'AUTHOR',      'Johnson' )
 SetMacro( 'AUTHORREF',   '' )
-SetMacro( 'COMPANY',     'AREC' )
-SetMacro( 'COPYRIGHT',   'Copyright (c) 2012, Johnson' )
-SetMacro( 'EMAIL',       'johnson.yu@arec.com' )
-SetMacro( 'LICENSE',     'GNU General Public License' )
-SetMacro( 'ORGANIZATION','AREC' )
+SetMacro( 'COMPANY',     'PcPartner' )
+SetMacro( 'COPYRIGHT',   'Copyright (c) 2014, Johnson' )
+SetMacro( 'EMAIL',       'johnsonyu@pcpartner.com' )
+SetMacro( 'LICENSE',     'xxx' )
+SetMacro( 'ORGANIZATION','PcPartner' )
 
 SetStyle( 'CPP' )
 
