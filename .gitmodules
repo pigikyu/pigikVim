@@ -34,9 +34,6 @@
 [submodule "bundle/vim-AutoComplPop"]
 	path = bundle/vim-AutoComplPop
 	url = git://github.com/vim-scripts/AutoComplPop.git
-[submodule "bundle/vim-clang_complete"]
-	path = bundle/vim-clang_complete
-	url = git://github.com/Rip-Rip/clang_complete
 [submodule "bundle/vim-NERD_tree"]
 	path = bundle/vim-NERD_tree
 	url = git://github.com/scrooloose/nerdtree.git
@@ -64,3 +61,6 @@
 [submodule "bundle/vim-gradle"]
 	path = bundle/vim-gradle
 	url = https://github.com/tfnico/vim-gradle.git
+[submodule "bundle/vim-clang"]
+	path = bundle/vim-clang
+	url = https://github.com/justmao945/vim-clang.git
