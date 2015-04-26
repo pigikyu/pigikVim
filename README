@@ -1,10 +1,11 @@
 
 install step:
 1. git submodule init
-2. git submodule update
+2. git submodule update --init --recursive
 3. ln ~/.vim/.vimrc ~/.vimrc
 4. install ctags and cscope
 5. install Clang_Complete
+6. to the folder "bundle/YouCompleteMe/" and execute: ./install.sh --clang-completer --gocode-completer
 
 how to:
 1. press F2 to toggle NerdTree

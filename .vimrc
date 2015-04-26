@@ -40,6 +40,7 @@ set mouse=nv
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
 autocmd BufRead,BufNewFile *.h set filetype=c
+autocmd BufRead,BufNewFile *.go set filetype=go
 let g:C_SourceCodeExtensions = 'h c cc cp cxx cpp CPP c++ i ii'
 
 "if has("gui_running")
@@ -147,15 +148,6 @@ let g:SrcExpl_pluginList=[
     \"Source_Explorer"
     \]
 
-" --- clang_complete
-"let g:clang_snippets=1
-"let g:clang_snippets_engine='snipmate'
-let g:clean_complete_auto = 0
-let g:clang_complete_copen = 1
-let g:clang_use_library = 1
-let g:clang_libary_path = "/usr/lib"
-set completeopt=menu,longest
-
 " ENCODING SETTING
 set encoding=utf-8
 set termencoding=utf-8
@@ -209,3 +201,9 @@ function! DbgMapping()
 endfunction
 
 call NormalMapping()
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
