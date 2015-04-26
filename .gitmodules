@@ -61,6 +61,3 @@
 [submodule "bundle/vim-gradle"]
 	path = bundle/vim-gradle
 	url = https://github.com/tfnico/vim-gradle.git
-[submodule "bundle/vim-clang"]
-	path = bundle/vim-clang
-	url = https://github.com/justmao945/vim-clang.git
