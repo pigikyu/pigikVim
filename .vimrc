@@ -76,6 +76,8 @@ inoremap <C-U> <C-G>u<C-U>
   set softtabstop=4
   set shiftwidth=4
   au FileType Makefile set noexpandtab
+  au BufRead,BufNewFile *.log set filetype=gclog
+  au BufRead,BufNewFile *.bin set filetype=gclog
 "}
 "
 "Restore cursor to file position in previous editing session
@@ -148,6 +150,10 @@ let g:SrcExpl_pluginList=[
     \"Source_Explorer"
     \]
 
+let Grep_Skip_files = "*.so *~ *.a"
+let Grep_Default_Options = '-i'
+let Grep_Default_Filelist = '*.c *.go *.cpp *.h Makefile *.sh'
+
 " ENCODING SETTING
 set encoding=utf-8
 set termencoding=utf-8
@@ -183,7 +189,7 @@ function! NormalMapping()
     map <silent> <F2> :TrinityToggleNERDTree<CR>
     map <silent> <F5> :TrinityToggleTagList<CR>
     map <silent> <F6> :QFix <CR>
-    map <silent> <F7> :Grep <CR>
+    map <silent> <F7> :Rgrep <CR>
     map <silent> <F8> :TrinityToggleAll <CR>
     map <silent> <F9> :TrinityToggleSourceExplorer<CR>
     map <silent> <F12> :call UseDebugToggle() <CR>
